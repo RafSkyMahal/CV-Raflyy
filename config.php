@@ -3,7 +3,7 @@
 $db_host = 'localhost';
 $db_user = 'root'; // User default XAMPP
 $db_pass = '';     // Password default XAMPP
-$db_name = 'dbcv';
+$db_name = 'psas_db'; // Ganti dengan nama database Anda
 
 // Membuat Koneksi
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
