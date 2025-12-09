@@ -1,0 +1,569 @@
+/* ==================== VARIABEL CSS ==================== */
+/* Di bagian ini didefinisikan variabel warna dan gaya utama */
+/* Variabel ini digunakan secara konsisten di seluruh halaman website */
+/* Ubah nilai variabel di sini untuk mengganti tampilan keseluruhan situs */
+:root {
+    --primary-color: #4e73df;        /* Warna utama (biru muda) */
+    --primary-dark: #3a56c4;         /* Warna utama gelap */
+    --secondary-color: #6f42c1;      /* Warna sekunder (ungu) */
+    --accent-color: #36b9cc;         /* Warna aksen (biru muda) */
+    --dark-color: #343a40;           /* Warna gelap untuk teks */
+    --light-color: #f8f9fa;          /* Warna latar terang */
+    --gray-light: #eaecf4;           /* Abu-abu terang */
+    --text-color: #434a54;           /* Warna teks utama */
+    --text-light: #858796;           /* Warna teks ringan */
+    --success-color: #1cc88a;        /* Warna sukses (hijau) */
+    --warning-color: #f6c23e;        /* Warna peringatan (kuning) */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Gradien utama */
+    --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--primary-color)); /* Gradien aksen */
+    --shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15); /* Bayangan default */
+    --shadow-hover: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2); /* Bayangan saat hover */
+    --border-radius: 0.65rem;        /* Radius border */
+    --transition: all 0.3s ease;     /* Transisi animasi */
+}
+
+/* ==================== GAYA DASAR & RESET ==================== */
+/* Gaya dasar untuk mereset margin dan padding elemen */
+/* Juga mencakup gaya untuk body dan heading */
+* {
+    margin: 0;                      /* Hapus margin default */
+    padding: 0;                     /* Hapus padding default */
+    box-sizing: border-box;         /* Sertakan border dan padding dalam lebar elemen */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;      /* Font utama halaman */
+    color: var(--text-color);                /* Warna teks utama */
+    background-color: #f5f7fb;              /* Warna background halaman */
+    line-height: 1.6;                       /* Jarak antar baris */
+    padding-top: 70px;                      /* Memberi ruang di atas untuk navbar tetap */
+    overflow-x: hidden;                     /* Sembunyikan scroll horizontal */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;  /* Font heading */
+    font-weight: 700;                       /* Ketebalan font heading */
+    color: var(--dark-color);               /* Warna heading */
+}
+
+/* ==================== LAYOUT UTAMA ==================== */
+/* Gaya untuk kontainer utama halaman CV */
+/* Bagian ini mengatur tampilan dan efek bayangan dari kontainer utama */
+.cv-container {
+    background: white;                          /* Warna background kontainer */
+    box-shadow: var(--shadow);                 /* Bayangan kontainer */
+    border-radius: var(--border-radius);       /* Radius border kontainer */
+    overflow: hidden;                           /* Sembunyikan elemen yang melebihi batas */
+    margin: 2rem auto;                          /* Margin atas dan bawah 2rem, tengah otomatis */
+    max-width: 1200px;                         /* Lebar maksimum kontainer */
+    transition: var(--transition);              /* Transisi efek ketika hover */
+}
+
+.cv-container:hover {
+    box-shadow: var(--shadow-hover);            /* Efek bayangan saat dihover */
+}
+
+/* ==================== BAGIAN HEADER ==================== */
+/* Gaya untuk bagian header yang berisi foto profil dan informasi dasar */
+.header {
+    background: var(--gradient-primary);       /* Background gradien utama */
+    color: white;                              /* Warna teks putih */
+    padding: 3.5rem 2.5rem;                    /* Padding atas/bawah 3.5rem, kiri/kanan 2.5rem */
+    position: relative;                         /* Posisi relatif untuk elemen absolut di dalamnya */
+    overflow: hidden;                           /* Sembunyikan elemen dekoratif yang melampaui batas */
+}
+
+/* Efek dekoratif untuk header */
+.header::before {
+    content: '';                               /* Buat elemen pseudo untuk efek dekoratif */
+    position: absolute;                         /* Posisi absolut terhadap .header */
+    top: -50px;                                /* Posisi atas -50px */
+    right: -50px;                              /* Posisi kanan -50px */
+    width: 200px;                              /* Lebar elemen */
+    height: 200px;                             /* Tinggi elemen */
+    border-radius: 50%;                        /* Radius border 50% untuk bentuk lingkaran */
+    background: rgba(255, 255, 255, 0.1);      /* Background putih transparan */
+}
+
+.header::after {
+    content: '';                               /* Buat elemen pseudo tambahan */
+    position: absolute;                         /* Posisi absolut terhadap .header */
+    bottom: -80px;                             /* Posisi bawah -80px */
+    left: -80px;                               /* Posisi kiri -80px */
+    width: 300px;                              /* Lebar elemen */
+    height: 300px;                             /* Tinggi elemen */
+    border-radius: 50%;                        /* Radius border 50% untuk bentuk lingkaran */
+    background: rgba(255, 255, 255, 0.1);      /* Background putih transparan */
+}
+
+/* Gaya untuk foto profil di header */
+.profile-img {
+    width: 160px;                              /* Lebar foto profil */
+    height: 160px;                             /* Tinggi foto profil */
+    border-radius: 50%;                        /* Radius border 50% untuk bentuk bulat */
+    border: 5px solid rgba(255, 255, 255, 0.3); /* Border putih transparan */
+    object-fit: cover;                         /* Sesuaikan gambar tanpa merusak rasio */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);  /* Bayangan foto profil */
+    transition: var(--transition);              /* Transisi efek saat hover */
+    z-index: 2;                                /* Z-index untuk menempatkan di atas elemen lain */
+    position: relative;                         /* Posisi relatif */
+}
+
+.profile-img:hover {
+    transform: scale(1.05);                     /* Efek zoom saat hover */
+    border-color: rgba(255, 255, 255, 0.5);    /* Warna border saat hover */
+}
+
+/* ==================== GAYA JUDUL SECTION ==================== */
+/* Gaya untuk judul-judul pada berbagai section halaman CV */
+/* Termasuk gaya untuk garis bawah dan tata letak judul */
+.section-title {
+    position: relative;                         /* Posisi relatif untuk elemen::after */
+    padding-bottom: 1.2rem;                     /* Jarak antara judul dan garis bawah */
+    margin-bottom: 2.2rem;                      /* Margin bawah judul */
+    font-weight: 700;                          /* Ketebalan font judul */
+    font-size: 1.8rem;                         /* Ukuran font judul */
+    color: var(--dark-color);                  /* Warna judul */
+}
+
+.section-title::after {
+    content: '';                               /* Buat elemen pseudo untuk garis bawah judul */
+    position: absolute;                         /* Posisi absolut terhadap .section-title */
+    bottom: 0;                                 /* Posisi bawah 0 */
+    left: 0;                                   /* Posisi kiri 0 */
+    width: 60px;                               /* Lebar garis bawah */
+    height: 4px;                               /* Tinggi garis bawah */
+    background: var(--gradient-primary);        /* Warna gradien garis bawah */
+    border-radius: 10px;                       /* Radius garis bawah */
+}
+
+.section-title.center {
+    text-align: center;                        /* Pusatkan teks judul */
+}
+
+.section-title.center::after {
+    left: 50%;                                 /* Posisi kiri 50% dari parent */
+    transform: translateX(-50%);               /* Geser ke kiri sejauh 50% dari lebarnya */
+}
+
+/* ==================== SECTION KONTEN ==================== */
+/* Gaya untuk section konten yang bisa muncul/tersembunyi */
+/* Digunakan untuk membuat efek tab atau section yang dapat diaktifkan */
+.content-section {
+    padding: 3rem 2.5rem;
+    display: none;
+    animation: fadeIn 0.5s ease;
+    background: white;
+    border-radius: var(--border-radius);
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== TIMELINE ==================== */
+/* Gaya untuk elemen timeline seperti pengalaman kerja atau pendidikan */
+/* Membuat efek garis waktu vertikal dengan titik-titik peristiwa */
+.timeline {
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    height: calc(100% - 20px);
+    width: 3px;
+    background: var(--gradient-primary);
+    border-radius: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.2rem;
+    padding: 1.5rem;
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.timeline-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 24px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 4px solid white;
+    box-shadow: 0 0 0 3px var(--primary-color);
+    z-index: 2;
+}
+
+/* ==================== GAYA CARD (PROYEK & ARTIKEL) ==================== */
+/* Gaya untuk card yang digunakan di bagian proyek dan artikel */
+/* Termasuk efek hover dan gaya gambar */
+.project-card, .article-card {
+    transition: var(--transition);
+    height: 100%;
+    border: none;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.project-card:hover, .article-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.project-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+/* ==================== GAYA BAGIAN KEMAMPUAN (SKILLS) ==================== */
+/* Gaya untuk menampilkan kemampuan dengan progress bar */
+.skill-item {
+    margin-bottom: 1.2rem;
+}
+
+.skill-name {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-percent {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.progress {
+    height: 10px;
+    border-radius: 10px;
+    background-color: var(--gray-light);
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: var(--gradient-primary);
+    border-radius: 10px;
+    transition: width 1.5s ease;
+}
+
+/* ==================== INFORMASI KONTAK ==================== */
+/* Gaya item untuk informasi kontak seperti email, telepon, dll */
+.contact-info {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.contact-info:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.2rem;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-links a:hover::before {
+    opacity: 1;
+}
+
+.social-links a i {
+    position: relative;
+    z-index: 1;
+}
+
+/* Form Styles */
+.form-control {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid var(--gray-light);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background: var(--gradient-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ==================== NAVIGATION BAR (NAVBAR) ==================== */
+/* Gaya untuk navbar yang tetap di atas saat halaman discroll */
+/* Bagian ini sangat penting untuk navigasi website */
+.cv-navbar {
+    background: white;                          /* Warna background navbar */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Bayangan navbar */
+    position: fixed;                            /* Posisi tetap saat scroll */
+    top: 0;                                     /* Posisi atas 0 */
+    width: 100%;                                /* Lebar penuh */
+    z-index: 1000;                             /* Z-index tinggi untuk selalu di atas */
+    padding: 0.8rem 0;                          /* Padding vertikal 0.8rem */
+}
+
+.nav-link {
+    color: var(--dark-color);                   /* Warna teks link */
+    font-weight: 600;                          /* Ketebalan font link */
+    padding: 0.8rem 1.2rem;                     /* Padding dalam link */
+    transition: var(--transition);              /* Transisi efek saat hover */
+    border-radius: var(--border-radius);        /* Radius border link */
+    margin: 0 0.2rem;                           /* Margin samping link */
+    position: relative;                          /* Posisi relatif untuk efek hover */
+}
+
+.nav-link::before {
+    content: '';                               /* Buat elemen pseudo untuk efek bawah link */
+    position: absolute;                         /* Posisi absolut terhadap .nav-link */
+    bottom: 0;                                 /* Posisi bawah 0 */
+    left: 50%;                                 /* Posisi kiri 50% */
+    width: 0;                                  /* Lebar awal 0 */
+    height: 3px;                               /* Tinggi garis efek */
+    background: var(--gradient-primary);        /* Warna gradien efek */
+    border-radius: 10px;                       /* Radius garis efek */
+    transition: var(--transition);              /* Transisi efek */
+    transform: translateX(-50%);               /* Geser ke kiri sejauh 50% dari lebarnya */
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);                /* Warna teks saat hover/aktif */
+    background-color: rgba(78, 115, 223, 0.1); /* Background saat hover/aktif */
+}
+
+.nav-link:hover::before, .nav-link.active::before {
+    width: 80%;                                /* Lebar garis efek saat hover/aktif */
+}
+
+.navbar-brand {
+    font-weight: 800;                          /* Ketebalan font brand */
+    color: var(--primary-color);               /* Warna brand */
+    font-size: 1.5rem;                         /* Ukuran font brand */
+}
+
+/* Floating Button */
+.floating-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.floating-btn:hover {
+    background: var(--gradient-accent);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Badges */
+.badge {
+    padding: 0.5rem 0.8rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.bg-primary {
+    background: var(--gradient-primary) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .header {
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .content-section {
+        padding: 2rem 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 65px;
+    }
+    
+    .header {
+        padding: 2rem 1rem;
+    }
+    
+    .profile-img {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .nav-link {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.8rem;
+    }
+    
+    .floating-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+/* Utility Classes */
+.text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mb-4 {
+    margin-bottom: 2.2rem !important;
+}
+
+.mt-4 {
+    margin-top: 2.2rem !important;
+}
+
+.rounded-lg {
+    border-radius: var(--border-radius) !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+/* ==================== ADMIN SPECIFIC STYLES ==================== */
+/* Gaya untuk tabel dan elemen admin */
+.admin-table {
+    vertical-align: middle;                     /* Perataan vertikal tabel admin */
+}
+
+.admin-table .btn {
+    margin-right: 5px;                          /* Margin kanan tombol di tabel admin */
+}
+
+/* Gaya untuk link admin di halaman artikel */
+.admin-links-bottom {
+    background: rgba(78, 115, 223, 0.1);       /* Background transparan untuk link admin */
+    padding: 1rem;                              /* Padding untuk link admin */
+    border-radius: var(--border-radius);        /* Radius border link admin */
+    margin-top: 1rem;                           /* Margin atas link admin */
+}
